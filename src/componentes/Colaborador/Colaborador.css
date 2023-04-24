@@ -1,0 +1,32 @@
+.colaborador{
+    width: 240px;
+}
+
+.colaborador .cabecalho{
+    background-color: #F0F0F0;  
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: 5px -3px 15px rgba(0, 0, 0, 0.337);
+}
+
+.colaborador img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    bottom: -50px;
+}
+
+.colaborador .rodapecolaborador{
+    background: #FFFFFF;
+    box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.337);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 90px;
+    padding-bottom: 40px;
+    margin-bottom: 32px;
+}
+
+.colaborador .rodapecolaborador h4{
+    color: #6278F7;
+    font-size: 18px;
+    line-height: 22px;
+}

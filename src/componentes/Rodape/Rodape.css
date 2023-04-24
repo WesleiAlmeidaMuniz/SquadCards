@@ -1,0 +1,49 @@
+.rodape{
+    background-image: url(../../../public/imagens/mesa-de-poker2.jpg);
+    background-color: #098a00d1;
+    color: #fff;
+    padding: 0px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rodape ul li{
+    display: inline-block;
+    margin-right: 32px;
+}
+
+.rodape ul li:last-child{
+    margin-right: 0px;
+}
+
+.logosquadcards img{
+    height: 150px;
+}
+
+.desenvolvido{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.desenvolvido h6 a {
+    color: white;  
+}
+
+.botaoexcluir{
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width:600px) {
+    .rodape{
+        flex-direction: column;
+        padding: 20px;
+    }
+    .desenvolvido{
+        text-align: center;
+    }
+}
