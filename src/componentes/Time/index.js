@@ -1,33 +1,21 @@
 import Colaborador from '../Colaborador'
 import './Time.css'
 
-const Time = (props) => {
-
-    const cssdiv = {
-        backgroundColor: props.corSecundaria,
-    }
-
-    const cssh3 = {
-        borderColor: props.corPrimaria,
-        color: props.corPrimaria
-    }
-
+const Time = ({ time, colaboradores, aoDeletar }) => {
     return (
-        (props.colaboradores.length > 0 || props.timeantigo.length > 0) ? <section className='time' style={cssdiv}>
-            <h3 style={cssh3}>{props.nome}</h3>
+        colaboradores.length > 0 && <section className='time'>
+            <h3 style={{ borderColor: time.corSecundaria }}>{time.nome}</h3>
             <div className='colaboradores'>
-                {props.colaboradores.map(colaborador => 
-                    <Colaborador 
-                        nome={colaborador.nome} 
-                        cargo={colaborador.cargo}
-                        imagem={colaborador.imagem}
-                        key={colaborador.nome}
-                        corDeFundo={props.corPrimaria}
+                {colaboradores.map((colaborador, indice) => {
+                    return <Colaborador 
+                        key={indice}
+                        colaborador={colaborador} 
+                        corDeFundo={time.corSecundaria}
+                        aoDeletar={aoDeletar}
                     />
-                )}
+                })}
             </div>
         </section>
-        : ''
     )
 }
 

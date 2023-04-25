@@ -9,43 +9,43 @@ function App() {
 
     const times = [
         {
-            nome: 'Valorant',
-            corPrimaria: '#57C278',
-            corSecundaria: '',
+          nome: 'Programação',
+          corPrimaria: '#D9F7E9',
+          corSecundaria: '#57C278'
         },
         {
-            nome: 'Fortnite',
-            corPrimaria: '#82CFFA',
-            corSecundaria: '',
+          nome: 'Fortnite',
+          corPrimaria: '#E8F8FF',
+          corSecundaria: '#82CFFA'
         },
         {
-            nome: 'League of Legends',
-            corPrimaria: '#A6D157',
-            corSecundaria: '',
+          nome: 'Data Science',
+          corPrimaria: '#F0F8E2',
+          corSecundaria: '#A6D157'
         },
         {
-            nome: 'CS GO',
-            corPrimaria: '#E06B69',
-            corSecundaria: '',
+          nome: 'Devops',
+          corPrimaria: '#FDE7E8',
+          corSecundaria: '#E06B69'
         },
         {
-            nome: 'Ragnarok',
-            corPrimaria: '#DB6EBF',
-            corSecundaria: '',
+          nome: 'UX e Design',
+          corPrimaria: '#FAE9F5',
+          corSecundaria: '#DB6EBF'
         },
         {
-            nome: 'Free Fire',
-            corPrimaria: '#FFBA05',
-            corSecundaria: '',
+          nome: 'Mobile',
+          corPrimaria: '#FFF5D9',
+          corSecundaria: '#FFBA05'
         },
         {
-            nome: 'Call of Duty MW2',
-            corPrimaria: '#FF8A29',
-            corSecundaria: '',
-        }
+          nome: 'Inovação e Gestão',
+          corPrimaria: '#FFEEDF',
+          corSecundaria: '#FF8A29'
+        },
     ]
 
-    let timeantigo = [
+    const timeantigo = [
         {
         cargo: "Dozeiro",
         imagem: "https://github.com/wesleialmeidamuniz.png",
@@ -70,13 +70,13 @@ function App() {
         nome: "Los Kok",
         time: "Fortnite"
     }
-]
+    ]
     
     if(localStorage.hasOwnProperty('timesalvo')){
         timeantigo = JSON.parse(localStorage.getItem('timesalvo'))
     }
 
-    const [colaboradores, setColaboradores] = useState(timeantigo , [])
+    const [colaboradores, setColaboradores] = useState(timeantigo)
 
     const aoNovoColaboradorAdicionado = (colaborador) => {
         setColaboradores([...colaboradores, colaborador])
@@ -91,6 +91,10 @@ function App() {
 
     }
 
+    function deletarColaborador()   {
+        console.log('Deletando colaborador')
+    }
+
     return (
         <div className="App">
             <Banner />
@@ -100,15 +104,14 @@ function App() {
                 aoNovoColaboradorAdicionado(colaborador)}
             />
 
-            {times.map(time => <Time 
-                key={time.nome} 
-                nome={time.nome} 
-                corPrimaria={time.corPrimaria} 
-                corSecundaria={time.corSecundaria}
-                imagemDeFundo={time.imagemDeFundo}
-                colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-                timeantigo={timeantigo.filter(timeantigo => timeantigo.time === time.nome)}
-            />)}
+            {times.map((time, indice) => 
+                <Time 
+                    key={indice} 
+                    time={time}
+                    colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+                    aoDeletar={deletarColaborador}
+                />
+            )}
 
             <Rodape />
         </div>
