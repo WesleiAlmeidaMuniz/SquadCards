@@ -10,7 +10,7 @@ function App() {
 
     const times = [
         {
-          nome: 'Programação',
+          nome: 'Valorant',
           corPrimaria: '#D9F7E9',
           corSecundaria: '#57C278'
         },
@@ -20,27 +20,27 @@ function App() {
           corSecundaria: '#82CFFA'
         },
         {
-          nome: 'Data Science',
+          nome: 'Ragnarok',
           corPrimaria: '#F0F8E2',
           corSecundaria: '#A6D157'
         },
         {
-          nome: 'Devops',
+          nome: 'League of Legends',
           corPrimaria: '#FDE7E8',
           corSecundaria: '#E06B69'
         },
         {
-          nome: 'UX e Design',
+          nome: 'Free Fire',
           corPrimaria: '#FAE9F5',
           corSecundaria: '#DB6EBF'
         },
         {
-          nome: 'Mobile',
+          nome: 'Counter Strike: GO',
           corPrimaria: '#FFF5D9',
           corSecundaria: '#FFBA05'
         },
         {
-          nome: 'Inovação e Gestão',
+          nome: 'Battlefield',
           corPrimaria: '#FFEEDF',
           corSecundaria: '#FF8A29'
         },
