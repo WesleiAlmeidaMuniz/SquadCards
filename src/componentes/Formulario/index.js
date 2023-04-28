@@ -3,6 +3,7 @@ import Botao from '../Botao'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
+import { v4 as uuidv4 } from 'uuid'
 
 const Formulario = (props) => {
 
@@ -14,6 +15,7 @@ const Formulario = (props) => {
     const aoSalvar = (evento) =>{
         evento.preventDefault()
         props.aoColaboradorCadastrado({
+            id: uuidv4(),
             nome,
             cargo,
             imagem,
@@ -63,7 +65,7 @@ const Formulario = (props) => {
                     />
                     <CampoTexto 
                         label="Imagem" 
-                        placeholder="https://blabla.com.br/imagem.jpg"
+                        placeholder="Digite o endereço da imagem"
                         valor={imagem}
                         aoAlterado={valor => setImagem(valor)}
                     />

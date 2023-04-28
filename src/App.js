@@ -3,92 +3,100 @@ import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
 
     const times = [
         {
-            nome: 'Valorant',
-            corPrimaria: '#57C278',
-            corSecundaria: '',
+          nome: 'Valorant',
+          corPrimaria: '#D9F7E9',
+          corSecundaria: '#57C278'
         },
         {
-            nome: 'Fortnite',
-            corPrimaria: '#82CFFA',
-            corSecundaria: '',
+          nome: 'Fortnite',
+          corPrimaria: '#E8F8FF',
+          corSecundaria: '#82CFFA'
         },
         {
-            nome: 'League of Legends',
-            corPrimaria: '#A6D157',
-            corSecundaria: '',
+          nome: 'Ragnarok',
+          corPrimaria: '#F0F8E2',
+          corSecundaria: '#A6D157'
         },
         {
-            nome: 'CS GO',
-            corPrimaria: '#E06B69',
-            corSecundaria: '',
+          nome: 'League of Legends',
+          corPrimaria: '#FDE7E8',
+          corSecundaria: '#E06B69'
         },
         {
-            nome: 'Ragnarok',
-            corPrimaria: '#DB6EBF',
-            corSecundaria: '',
+          nome: 'Free Fire',
+          corPrimaria: '#FAE9F5',
+          corSecundaria: '#DB6EBF'
         },
         {
-            nome: 'Free Fire',
-            corPrimaria: '#FFBA05',
-            corSecundaria: '',
+          nome: 'Counter Strike: GO',
+          corPrimaria: '#FFF5D9',
+          corSecundaria: '#FFBA05'
         },
         {
-            nome: 'Call of Duty MW2',
-            corPrimaria: '#FF8A29',
-            corSecundaria: '',
-        }
+          nome: 'Battlefield',
+          corPrimaria: '#FFEEDF',
+          corSecundaria: '#FF8A29'
+        },
     ]
 
     let timeantigo = [
         {
-        cargo: "Dozeiro",
-        imagem: "https://github.com/wesleialmeidamuniz.png",
-        nome: "Shadowkin",
-        time: "Fortnite"
-    },
-    {
-        cargo: "Canhão de Vidro",
-        imagem: "https://i.ibb.co/3YnpFtK/Imagem-do-Whats-App-de-2023-04-15-s-19-15-36.jpg",
-        nome: "Horizon Lest",
-        time: "Fortnite"
-    },
-    {
-        cargo: "Atiradora de Elite",
-        imagem: "https://i.ibb.co/vxZYyBK/dani.png",
-        nome: "The Darkness",
-        time: "Fortnite"
-    },
-    {
-        cargo: "Rushador",
-        imagem: "https://i.ibb.co/6X4t778/kok.png",
-        nome: "Los Kok",
-        time: "Fortnite"
-    }
-]
+            id: uuidv4(),    
+            cargo: "Dozeiro",
+            imagem: "https://github.com/wesleialmeidamuniz.png",
+            nome: "Shadowkin",
+            time: "Fortnite"
+        },
+        {
+            id: uuidv4(),
+            cargo: "Canhão de Vidro",
+            imagem: "https://i.ibb.co/3YnpFtK/Imagem-do-Whats-App-de-2023-04-15-s-19-15-36.jpg",
+            nome: "Horizon Lest",
+            time: "Fortnite"
+        },
+        {
+            id: uuidv4(),
+            cargo: "Atiradora de Elite",
+            imagem: "https://i.ibb.co/vxZYyBK/dani.png",
+            nome: "The Darkness",
+            time: "Fortnite"
+        },
+        {
+            id: uuidv4(),
+            cargo: "Rushador",
+            imagem: "https://i.ibb.co/6X4t778/kok.png",
+            nome: "Los Kok",
+            time: "Fortnite"
+        }
+    ]
     
-    if(localStorage.hasOwnProperty('timesalvo')){
-        timeantigo = JSON.parse(localStorage.getItem('timesalvo'))
+    //Este Loop recupera os dados salvos no LocalStorage
+    for(var i = 0; i < localStorage.length; i++){
+        console.log(localStorage.getItem(localStorage.key(i)))
+        //Este .Push joga os dados do localStorage para a var Timeantigo, irá renderizar na pagina com os times padrão.
+        timeantigo.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
-
-    const [colaboradores, setColaboradores] = useState(timeantigo , [])
+    
+    const [colaboradores, setColaboradores] = useState(timeantigo)
 
     const aoNovoColaboradorAdicionado = (colaborador) => {
         setColaboradores([...colaboradores, colaborador])
+        //Este .setItem salva o dado do colaborador criado no localStorage
+        localStorage.setItem(colaborador.id, JSON.stringify(colaborador))
+        
+    }
 
-        if(localStorage.hasOwnProperty('timesalvo')){
-            timeantigo = JSON.parse(localStorage.getItem('timesalvo'))
-        }
-
-        timeantigo.push(colaborador)
-
-        localStorage.setItem('timesalvo', JSON.stringify(timeantigo))
-
+    function deletarColaborador(id){
+       setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+        //Este .removeItem remove os dados salvos no LocalStorage
+       localStorage.removeItem(id);
     }
 
     return (
@@ -100,15 +108,14 @@ function App() {
                 aoNovoColaboradorAdicionado(colaborador)}
             />
 
-            {times.map(time => <Time 
-                key={time.nome} 
-                nome={time.nome} 
-                corPrimaria={time.corPrimaria} 
-                corSecundaria={time.corSecundaria}
-                imagemDeFundo={time.imagemDeFundo}
-                colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-                timeantigo={timeantigo.filter(timeantigo => timeantigo.time === time.nome)}
-            />)}
+            {times.map((time, indice) => 
+                <Time 
+                    key={indice} 
+                    time={time}
+                    colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+                    aoDeletar={deletarColaborador}
+                />
+            )}
 
             <Rodape />
         </div>
