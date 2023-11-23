@@ -3,6 +3,10 @@
 Este é o meu primeiro projeto em [React](https://github.com/facebook/create-react-app).
 desenvolvido paralelamente com a formação de React da Alura e aplicando conceitos na prática.
 
+![image](https://github.com/WesleiAlmeidaMuniz/SquadCards/assets/88255036/69d63ed6-12be-4e32-82ca-927224cc4d3d)
+![image](https://github.com/WesleiAlmeidaMuniz/SquadCards/assets/88255036/e513e073-d4f9-47d1-8a5f-2609f46e7e1f)
+
+
 ## Objetivo
 
 O objetivo deste projeto é criar Cards personalizado com os dados do seu esquadrão e jogo preferido.
